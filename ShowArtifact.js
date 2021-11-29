@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, FlatList } from 'react-native';
-import CategoryList from '../components/CategoryList';
+import artifactComponent from '../components/artifactComponent';
 
-export default class HienVat extends React.Component {
+export default class ShowArtifact extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      categories: [
+      artifacts: [
       {id: 1, name: 'Đường cách mạng'},
       {id: 2, name: 'Bia đá quốc tử giám'},
       {id: 3, name: 'Trống đồng Cảnh Thịnh'},
@@ -16,12 +16,13 @@ export default class HienVat extends React.Component {
   }
 
   render() {
-    const { categories } = this.state;
+    const { artifacts } = this.state;
     return (
-          <FlatList
-            data ={categories}
-            renderItem={({ item })=> <CategoryList category = {item} />}
-            keyExtractor={(item =>item.id)}/>
+      <ScrollView>
+      {artifacts.map(artifact => (
+          <EventComponent key = {artifact.id} artifact = {artifacts} />
+      ))}
+      </ScrollView>
       
     );
   }
